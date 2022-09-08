@@ -15,7 +15,16 @@
         </div>
 
     </div>
+I really want to learn Lambda, and I feel the best way to do that is set up a demonstration website where I can showcase the numerous things that Lambda (and other services) can do.
+The net output will be a reminder for me and a repository of knowledge for others. 
 
+I started off with a few things that had been set up over the past couple of years: an AWS Root account and an IAM user with full permissions. I'd registered the domain davidjcalder.co.uk in Route53. Visual Studio Code was already installed on my Mac, and I had a GitHub account.
+
+I began by creating a new repository on GitHub to store the source HTML for my website. I originally intended to have GitHub deploy the HTML via GitHub actions but then I found a VS Code plugin that makes it easy to upload the files to S3. I created a new S3 bucket, called www.davidjcalder.co.uk and configured it to act as a web server.  I also added a CNAME to my DNS entry in Route53 pointing to the public address of the S3 bucket. 
+
+Mailchimp offers a free service for sending emails to subscribers so I signed up to it. I needed to verify the email address my mail would be sent from so I had to configure <a href="https://docs.aws.amazon.com/ses/latest/dg/Welcome.html">Amazon SES</a> to <a href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email.html">receive emails</a>. This involved a number of actions: <a href="https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#verify-domain-procedure">creating a domain identity</a> (which needs to be in one of the <a href="https://docs.aws.amazon.com/ses/latest/dg/regions.html#region-receive-email">three Regions</a> that can receive email);  <a href="https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc">verifying a DKIM domain identity with my DNS provider</a> (very easy to do because the domain was set up in Route53); <a href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-mx-record.html">adding an MX record to my domain in Route53</a>. I then created another S3 bucket and <a href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-permissions.html#receiving-email-permissions-s3">gave it the permissions</a> to receive emails from SES (decide on a rule_set_name and receipt_rule_name now). Finally I configured a rule set and a receipt rule name in <a href="https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html">Email receiving</a> (note - you'll only see this option in the console if you switch to one of the three Regions https://docs.aws.amazon.com/ses/latest/dg/regions.html#region-receive-email that can receive email); using the same rule_set_name and receipt_rule_name I used in the S3 permissions policy created earlier (a bit back-to-front if you ask me). This <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ses-troubleshoot-inbound-emails/">troubleshooting doc</a> was very helpful for tidying up the loose ends.
+
+Lessons learnt: when configuring permissions policies make sure you change all the words highlighted in red; when the Amazon docs say a service is only available in a certain region, don't assume yours is one of them; don't forget to activate the rule set
 </body>
 
 </html>
