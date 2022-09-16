@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>David J Calder - Blog</title>
+    <title>David J Calder - Developments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -10,14 +10,65 @@
 <body>
     <div class="w3-container">
         <div class="w3-panel w3-border w3-round-xlarge">
-            <p>David J Calder</p>
+            <p>David J Calder - Developments</p>
         </div>
     </div>
     <div class="w3-container">
 
         <div class="w3-panel w3-border w3-round-xlarge">
             <p>
-                <b>Blog: DJC 001: Hello World!</b>
+                <b>DJC 002: Crafting a blog</b>
+            </p>            
+            <p>
+                <b>2022-09-16</b>
+            </p>
+            <p>I crafted the last blog in <a href="https://html.spec.whatwg.org/" target="_blank"
+                    rel="noopener">HTML</a> in VS Code. Writing the text of the blog was easy, but applying links was
+                painful. VS Code autocompleted each tag as I wrote it, which meant I kept having to delete each
+                <code>&lt;/a&gt;</code> tag and rewrite it on the other side of the text I was marking up. I've been
+                keen to try out the ideas at <a href="https://jamstack.org/" target="_blank"
+                    rel="noopener">Jamstack.org</a> for a while now. I really wanted to set up <a
+                    href="https://www.netlifycms.org/" target="_blank" rel="noopener">Netlify CMS</a> to write content
+                to GitHub, but in doing so I found I needed to set up a Netlify account to facilitate the OAuth login
+                (more details <a
+                    href="https://answers.netlify.com/t/netlify-cms-github-login-doesnt-work-without-localhost/35588"
+                    target="_blank" rel="noopener">here</a> and <a
+                    href="https://github.com/netlify/netlify-cms/issues/663" target="_blank" rel="noopener">here</a>).
+                Then, when I was doing the OAuth setup, I seemed to be forced into setting up a Netlify site. I didn't
+                like it and soon abandoned it.
+            </p>
+            <p>I spent several hours looking for something that would fit my needs when I came across <a
+                    href="https://tiny.cloud" target="_blank" rel="noopener">TinyMCE</a>, which is
+                a really nice WYSIWYG editor that spits out clean HTML5. It doesn't actually spit it out to anywhere in
+                particular though - you have to code that bit yourself. There's a <a
+                    href="https://www.tiny.cloud/blog/load-save-content-with-ajax/" target="_blank" rel="noopener"
+                    data-saferedirecturl="https://www.tiny.cloud/blog/load-save-content-with-ajax/">helpful
+                    blog</a> showing how you can do this. Instead of writing a PHP back end I'll write a Lambda function
+                - so, one for the future. For now, I will use the WYSIWYG editor to create the HTML and then copy and
+                paste it into VS Code.</p>
+            <p>Instructions:</p>
+            <ul>
+                <li>Register an account at <a href="https://www.tiny.cloud/">tiny.cloud</a></li>
+                <li>Add the domain of your website as an <a href="https://www.tiny.cloud/my-account/domains/">approved
+                        domain</a></li>
+                <li>Create a new page on your website, e.g. wysiwyg.html</li>
+                <li>Copy the <a href="https://www.tiny.cloud/docs/tinymce/6/basic-setup/#basic-configuration-example"
+                        target="_blank" rel="noopener">basic configuration example</a> into wysiwyg.html and swap the
+                    text <code>no-api-key</code> with the api key generated for you when you created your account</li>
+                <li>Finally, load the page and use the editor to write your next blog</li>
+                <li>Then choose <em>View &gt; Source code</em> and copy the output to your HTML editor</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="w3-container">
+
+        <div class="w3-panel w3-border w3-round-xlarge">
+            <p>
+                <b>DJC 001: Hello World!</b>
+            </p>
+            <p>
+                <b>2022-09-16</b>
             </p>
             <p>
                 I really want to learn <a href="https://en.wikipedia.org/wiki/AWS_Lambda">AWS Lambda</a>, and I feel the
